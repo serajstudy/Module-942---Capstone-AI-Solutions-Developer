@@ -122,6 +122,35 @@ Implementation planning and project setup.
 Seraj Ali
 
 
+## How It Works
+
+User
+→ Streamlit
+→ Python
+→ Prompt
+→ Ollama
+→ Open-Source LLM
+→ AI Response
+→ User
+
+### Mermaid Workflow Diagram
+
+```mermaid
+flowchart LR
+    A[User] --> B[Streamlit Interface]
+    B --> C[Python Application]
+    C --> D[Prompt]
+    D --> E[Ollama]
+    E --> F[Open-Source LLM]
+    F --> G[AI Response]
+    G --> B
+    B --> A
+
+
+
+
+
+
 
 
 
@@ -178,4 +207,6 @@ git push -u origin master
 
 
  >**
+
+
 
