@@ -3,7 +3,7 @@
 An AI-powered Q&A tool that helps prospective international students get quick, plain-language answers to common study-abroad questions — using a local, open-source LLM. No paid APIs, no cloud services, no internet connection required after setup.
 
 > **Course:** CAP 942 — AI Application Development Capstone
-> **Author:** [Your Name]
+> **Author:** [Md Seraj Ali]
 
 ---
 
