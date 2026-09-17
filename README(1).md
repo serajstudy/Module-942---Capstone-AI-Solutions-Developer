@@ -247,3 +247,70 @@ uv run pytest
 - [ ] Tests included and passing (`uv run pytest`)
 - [ ] `.gitignore` excludes virtual environments and cache files
 - [ ] No secrets or API keys committed to the repository
+
+
+
+study-abroad-ai-assistant/
+│
+├── app.py
+├── llm_helper.py
+├── prompts.py
+├── utils.py
+├── pyproject.toml
+├── README.md
+│
+├── docs/
+│   ├── workflow_diagram.png
+│   └── architecture_explanation.docx
+│
+└── tests/
+    └── test_prompts.py
+
+
+    CAP 942 — Streamlit Application Manual Testing
+
+Run the Streamlit application:
+uv run streamlit run app.py
+
+Test #1 — Ask a Study-Abroad Question
+1. Open the Streamlit application in the browser.
+2. Enter:
+   What documents do I need to study in Canada?
+3. Click "🚀 Ask AI Assistant".
+4. Expected result: The application displays an AI-generated answer about documents commonly needed to study in Canada.
+
+Test #2 — Ask a Scholarship Question
+1. Enter:
+   How do scholarships for international students usually work?
+2. Click "🚀 Ask AI Assistant".
+3. Expected result: The application displays an AI-generated answer explaining scholarships for international students.
+
+Test #3 — Empty Question
+1. Do not type anything in the question box.
+2. Click "🚀 Ask AI Assistant".
+3. Expected result:
+   Please enter a question before clicking Ask.
+
+Test #4 — Off-Topic Question
+1. Enter:
+   Write me a poem about cats.
+2. Click "🚀 Ask AI Assistant".
+3. Expected result: The AI politely explains that it is focused on study-abroad questions rather than unrelated topics.
+
+Manual Testing Summary:
+✓ Streamlit application opens successfully.
+✓ Study-abroad questions receive AI-generated answers.
+✓ Scholarship questions receive AI-generated answers.
+✓ Empty input is validated correctly.
+✓ Off-topic questions are handled by the study-abroad system prompt.
+✓ The application works end-to-end with the local Ollama/Llama model.
+
+MVP includes:
+
+✅ User enters a question
+✅ Question validation
+✅ Study-abroad prompt
+✅ Local open-source LLM
+✅ AI-generated answer
+✅ Streamlit interface
+✅ Basic error handling

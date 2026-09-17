@@ -2,7 +2,7 @@
 
 ## CAP 942 Presentation Notes
 
-> **Purpose:** Use this document to explain the architecture, workflow, and code to your teacher during the presentation.
+>
 
 ---
 
@@ -26,7 +26,7 @@ First, the student opens my **Study Abroad AI Assistant** and enters a study-abr
 What documents do I typically need to study in Canada?
 ```
 
-### What to say to the teacher
+### 
 
 > “The student is the starting point of the workflow. The goal is to make it easy for a student to ask a study-abroad question in plain English.”
 
@@ -60,7 +60,7 @@ In the VS Code terminal, I use:
 uv run streamlit run app.py
 ```
 
-### What to say to the teacher
+### 
 
 > “The application is built with Streamlit. I run it from the VS Code terminal using `uv run streamlit run app.py`. The `app.py` file is the entry point of my application. It creates the user interface, receives the student's question, and displays the final response.”
 
@@ -143,7 +143,7 @@ or:
 
 ```
 
-### What to say to the teacher
+### 
 
 > “Before calling the AI model, I validate the user's input. The `utils.py` file checks whether the question is empty. If the input is empty, the application shows a validation message and does not make an unnecessary LLM call.”
 
@@ -219,7 +219,7 @@ System instructions
 Final prompt
 ```
 
-### What to say to the teacher
+### 
 
 > “The `prompts.py` file is my prompt layer. It contains the system prompt and a function called `build_prompt`. The function combines my system instructions with the student's question. The system prompt keeps the AI focused on study-abroad topics.”
 
@@ -321,7 +321,7 @@ return response["message"]["content"].strip()
 
 ---
 
-## Important point for the teacher
+## 
 
 > “This is the main AI part of my project. Ollama runs the open-source Llama 3.2:3b model locally. Because the model runs locally, my project does not require a paid external AI API.”
 
@@ -341,7 +341,7 @@ What documents do I typically need to study in Canada?
 
 the model generates a general response about documents that students may typically need.
 
-### What to say to the teacher
+### 
 
 > “The Llama 3.2:3b model processes the prompt and generates the answer. The response is then returned from Ollama to my Python application.”
 
@@ -361,7 +361,7 @@ Streamlit UI
 
 displays the answer on the screen.
 
-### What to say to the teacher
+### 
 
 > “After the model generates the response, the response is returned to my Python application. Streamlit then displays the AI-generated answer so the student can read it.”
 
@@ -425,7 +425,7 @@ STUDENT
 
 # 🧩 WHY I SEPARATED THE CODE
 
-### What to say to the teacher
+### 
 
 > “I separated the application into different files so each part has a clear responsibility. This makes the project easier to understand, test, maintain, and explain.”
 
@@ -461,7 +461,7 @@ Documentation
 
 # 🚫 IMPORTANT DESIGN DECISION — NO RAG / NO DATABASE
 
-### What to say to the teacher
+### 
 
 > “My MVP does not use RAG or a database. The application does not search the internet or retrieve information from a document database.”
 
@@ -490,7 +490,7 @@ Live Web Search
 
 # ⚠️ LIMITATION
 
-### What to say to the teacher
+### 
 
 > “Because my MVP does not retrieve live information, information such as current visa requirements, fees, deadlines, tuition, or other time-sensitive information may not always be current.”
 
@@ -521,14 +521,13 @@ The test result was:
 4 passed
 ```
 
-### What to say to the teacher
+### 
 
 > “I also created automated tests for the prompt-building and input-validation functions. My pytest test suite passed four tests.”
 
 ---
 
-# 🚀 LIVE DEMO — WHAT TO SHOW THE TEACHER
-
+# 🚀 LIVE DEMO — Flow
 ## Step 1 — Open VS Code terminal
 
 Run:
@@ -641,3 +640,62 @@ Streamlit
 ↓
 Student
 ```
+
+
+
+CAP 942 — Streamlit Application Manual Testing
+
+Run the Streamlit application:
+uv run streamlit run app.py
+
+Test #1 — Ask a Study-Abroad Question
+1. Open the Streamlit application in the browser.
+2. Enter:
+   What documents do I need to study in Canada?
+3. Click "🚀 Ask AI Assistant".
+4. Expected result: The application displays an AI-generated answer about documents commonly needed to study in Canada.
+
+Test #2 — Ask a Scholarship Question
+1. Enter:
+   How do scholarships for international students usually work?
+2. Click "🚀 Ask AI Assistant".
+3. Expected result: The application displays an AI-generated answer explaining scholarships for international students.
+
+Test #3 — Empty Question
+1. Do not type anything in the question box.
+2. Click "🚀 Ask AI Assistant".
+3. Expected result:
+   Please enter a question before clicking Ask.
+
+Test #4 — Off-Topic Question
+1. Enter:
+   Write me a poem about cats.
+2. Click "🚀 Ask AI Assistant".
+3. Expected result: The AI politely explains that it is focused on study-abroad questions rather than unrelated topics.
+
+Manual Testing Summary:
+✓ Streamlit application opens successfully.
+✓ Study-abroad questions receive AI-generated answers.
+✓ Scholarship questions receive AI-generated answers.
+✓ Empty input is validated correctly.
+✓ Off-topic questions are handled by the study-abroad system prompt.
+✓ The application works end-to-end with the local Ollama/Llama model.
+
+
+
+
+MVP includes:
+
+✅ User enters a question
+✅ Question validation
+✅ Study-abroad prompt
+✅ Local open-source LLM
+✅ AI-generated answer
+✅ Streamlit interface
+✅ Basic error handling
+
+
+
+“So, in simple terms, the student asks a question, Streamlit receives it, the application validates the input, `prompts.py` builds the prompt, `llm_helper.py` sends it to my local Llama 3.2:3b model through Ollama, the model generates a response, and Streamlit displays that response back to the student.
+>
+> The architecture is intentionally simple because this is my CAP 942 MVP. I focused on building one complete working AI application rather than adding unnecessary features.”
